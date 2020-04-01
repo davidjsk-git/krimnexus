@@ -1,0 +1,32 @@
+extends layout
+
+block script
+  style(type="text/css").
+    .masthead.segment {
+      min-height: 400px;
+      padding: 1em 0em;
+    }
+    .masthead h1.ui.header {
+      margin-top: 1em;
+      margin-bottom: 0em;
+      font-size: 5em;
+      font-weight: normal;
+    }
+
+    .masthead ui.action.input {
+      margin-bottom: 2em;
+    }
+
+block content
+  div(class="ui vertical masthead center aligned segment")
+    div(class="ui text container")
+      h1(class="ui header") #{title}
+      div(class="ui large search icon input")
+        i(class="search icon")
+        input(type="text" class="search")
+
+      script.
+
+  div(class="ui vertical segment")
+    div(class="ui text container")
+      div(id="result")

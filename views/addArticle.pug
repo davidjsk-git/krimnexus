@@ -1,0 +1,50 @@
+extends layout
+
+block script
+  style(type="text/css").
+    .masthead.segment {
+      min-height: 400px;
+      padding: 1em 0em;
+    }
+    .masthead h1.ui.header {
+      margin-top: 1em;
+      margin-bottom: 0em;
+      font-size: 3em;
+      font-weight: normal;
+    }
+
+    .masthead ui.action.input {
+      margin-bottom: 2em;
+    }
+
+block content
+  div(class="ui vertical masthead segment")
+    div(class="ui text container")
+      h1(class="ui blue header") #{title}
+      form(class="ui form" method="POST" action="/article")
+        div(class="ui segment")
+          div(class="field")
+            label 제목
+            input(type="text" name="subject")
+          div(class="field")
+            label 저자
+            input(type="text" name="author")
+          div(class="field")
+            label 분류
+            select(class="ui dropdown" name="category")
+              option(value="") 선택
+              option(value="선교") 선교
+              option(value="제자도") 제자도
+              option(value="타문화") 타문화
+          div(class="field")
+            label 태그
+            input(type="text" name="tags" placeholder="#태그1 #태그2")
+          div(class="field")
+            label 내용
+            textarea(id="contents" name="contents")
+          button(class="ui primary button" type="submit") 등록
+
+          script.
+            $('.ui.dropdown')
+              .dropdown()
+            ;
