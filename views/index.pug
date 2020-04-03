@@ -20,13 +20,26 @@ block script
 block content
   div(class="ui vertical masthead center aligned segment")
     div(class="ui text container")
-      h1(class="ui header") #{title}
-      div(class="ui large search icon input")
-        i(class="search icon")
-        input(type="text" class="search")
-
-      script.
+      h1(class="ui teal header") #{title}
+      form(class="ui big form" method="POST" action="/" id="searchForm")
+        div(class="inline field")
+          input(class="ui big input" type="text" name="keyword")
+        button(class="ui primary big submit button" form="searchForm") 검색
 
   div(class="ui vertical segment")
     div(class="ui text container")
-      div(id="result")
+      div(class="ui divided items")
+        if docs.length
+          each doc in docs
+            div(class="item")
+              div(class="content")
+                a(class="header") #{doc.subject}
+                div(class="description")
+                  p 저자: #{doc.author}
+                  p #{doc.contents}
+                  p 태그:
+                    a(href="?option=1&tag=" + doc.tags[0]) ##{doc.tags[0]}&nbsp;
+                    a(href="?option=1&tag=" + doc.tags[1]) ##{doc.tags[1]}&nbsp;
+                    a(href="?option=1&tag=" + doc.tags[2]) ##{doc.tags[2]}
+                  p 분류:
+                    a(href="?opttion=0&category=" + doc.category) #{doc.category}

@@ -1,0 +1,43 @@
+extends layout
+
+block script
+  style(type="text/css").
+    .masthead.segment {
+      min-height: 150px;
+      padding: 1em 1em;
+      margin-left: 1em;
+    }
+    .masthead h1.ui.header {
+      margin-top: 0em;
+      margin-bottom: 0em;
+      font-size: 3em;
+      font-weight: normal;
+    }
+
+    .masthead ui.action.input {
+      margin-bottom: 2em;
+    }
+
+block content
+  div(class="ui vertical masthead segment")
+    div(class="ui container")
+      div(class="inline fields")
+        div(class="field")
+          h1(class="ui teal header") #{title}
+        div(class="field")
+          div(class="ui search")
+            div(class="ui icon input")
+              input(class="prompt" type="text")
+              i(class="search icon")
+            div(class="results")
+
+        script.
+          $('.ui.search')
+            .search({
+              type: 'category'
+            })
+          ;
+
+  div(class="ui vertical segment")
+    div(class="ui text container")
+      div(id="result")
